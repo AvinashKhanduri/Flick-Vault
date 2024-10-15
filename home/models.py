@@ -1,6 +1,7 @@
 from django.db import models
 from base.models import baseModel
 
+
 class Movie(baseModel):
     title = models.TextField(max_length=100)
     genre = models.TextField(max_length=100)
