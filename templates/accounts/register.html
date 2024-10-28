@@ -1,0 +1,41 @@
+{% extends 'base/base.html' %}
+{% block title %} Register {% endblock %}
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
+{% endblock %}
+{% block pagebody %}
+<div class="login-wrapper">
+<form class="form" method="post">
+    {% csrf_token%}
+    {% load static %}
+    <img src="{% static 'accounts/images/avatar.jpeg' %}" alt="">
+    <h2>Register</h2>
+    <p>Already have an accunt <a href="{% url 'login' %}">Login</a></p>
+    <div class="input-group">
+      <input type="text" name="First Name" id="loginUser" required>
+      <label for="loginUser">First Name</label>
+    </div>
+    <div class="input-group">
+        <input type="text" name="Last Name" id="loginUser" required>
+        <label for="loginUser">Last Name</label>
+      </div>
+      <div class="input-group">
+        <input type="text" name="User Name" id="loginUser" required>
+        <label for="loginUser">User Name</label>
+      </div>
+      <div class="input-group">
+        <input type="email" name="Email" id="loginUser" required>
+        <label for="loginUser">Email</label>
+      </div>
+    <div class="input-group">
+      <input type="password" name="loginPassword" id="loginPassword" required>
+      <label for="loginPassword">Password</label>
+    </div>
+    <input type="submit" value="Register" class="submit-btn">
+    {% include 'base/alert.html' %}
+  </form>
+</div>
+
+
+{% endblock %}
