@@ -1,0 +1,329 @@
+{% extends 'base/base.html' %}
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/css/homepage.css' %}">
+
+{% endblock %}
+
+{% block pagebody %}
+
+<nav>
+    <div class="navContainer">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div> <!-- Hamburger icon -->
+        <div class="nav-links">
+            <div>Home</div>
+            <div>Bookings</div>
+            <div>Upcoming</div>
+            <div>About Us</div>
+            <div>Contact Us</div>
+            <a href="{% url 'register' %}" class="ms-2 btn rounded-pill btn-outline-light">Sign Up</a>
+              <!-- <div class="profileImage"></div> -->
+        </div>
+    </div>
+</nav>
+
+<main>
+    <section id="tranding">
+       
+        <div class="container">
+            <!-- <div class="container"> -->
+                <!-- <h3 class="text-center section-subheading">- Latest -</h3> -->
+                <!-- <h1 class="text-center section-heading">Latest Tranding Movies</h1> -->
+              <!-- </div> -->
+          <div class="swiper tranding-slider">
+            <div class="swiper-wrapper">
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                {% load static %}
+                  <img src="{% static 'home/images/tranding-food-1 (38).png'%}" alt="Tranding">
+                </div>
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">$20</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <h2 class="food-name">
+                      Special Pizza
+                    </h2>
+                    <h3 class="food-rating">
+                      <span>4.5</span>
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                {% load static %}
+                  <img src="{% static 'home/images/tranding-food-2 (6).png'%}" alt="Tranding">
+                </div>
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">$20</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <h2 class="food-name">
+                      Special Pizza
+                    </h2>
+                    <h3 class="food-rating">
+                      <span>4.5</span>
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                {% load static %}
+                  <img src="{% static 'home/images/tranding-food-3 (1).png'%}" alt="Tranding">
+                </div>
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">$20</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <h2 class="food-name">
+                      Special Pizza
+                    </h2>
+                    <h3 class="food-rating">
+                      <span>4.5</span>
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                {% load static %}
+                  <img src="{% static 'home/images/tranding-food-4 (2).png'%}" alt="Tranding">
+                </div>
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">$20</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <h2 class="food-name">
+                      Special Pizza
+                    </h2>
+                    <h3 class="food-rating">
+                      <span>4.5</span>
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                {% load static %}
+                  <img src="{% static 'home/images/tranding-food-5 (1).png'%}" alt="Tranding">
+                </div>
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">$20</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <h2 class="food-name">
+                      Special Pizza
+                    </h2>
+                    <h3 class="food-rating">
+                      <span>4.5</span>
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <!-- Slide-end -->
+              <!-- Slide-start -->
+              <div class="swiper-slide tranding-slide">
+                <div class="tranding-slide-img">
+                {% load static %}
+                  <img src="{% static 'home/images/tranding-food-6 (1).png'%}" alt="Tranding">
+                </div>
+                <div class="tranding-slide-content">
+                  <h1 class="food-price">$20</h1>
+                  <div class="tranding-slide-content-bottom">
+                    <h2 class="food-name">
+                      Special Pizza
+                    </h2>
+                    <h3 class="food-rating">
+                      <span>4.5</span>
+                      <div class="rating">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                      </div>
+                    </h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="tranding-slider-control">
+             
+              <div class="swiper-pagination"></div>
+            </div>
+  
+          </div>
+        </div>
+  </section>
+      
+      <!-- Recommanded -->
+       <hr>
+      <h2 class="m-3" data-aos="fade-up"
+      
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-center" >Recommanded</h2>
+      
+      
+
+     
+      <div class="mt-5 gallery js-flickity"
+      data-flickity-options='{ "wrapAround": true }'>
+      
+      <div class="gallery-cell">
+        {% load static %}
+        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+      </div>
+      <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+      </div>
+     
+      <!-- Your Intrest -->
+       <hr class="mt-5">
+      <h2 class="m-3" data-aos="fade-up"
+      
+      data-aos-delay="50"
+      data-aos-duration="1000"
+      data-aos-easing="ease-in-out"
+      data-aos-mirror="true"
+      data-aos-once="false"
+      data-aos-anchor-placement="top-center" >Your Intrest</h2>
+
+      <div class="mt-5 gallery js-flickity"
+      data-flickity-options='{ "wrapAround": true }'>
+      
+      <div class="gallery-cell">
+        {% load static %}
+        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+      </div>
+      <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+        <div class="gallery-cell">
+          {% load static %}
+          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        </div>
+      </div>
+
+      <!-- end of main style="height: 5rem; width: 100vw; border: 1px solid white;" -->
+
+      <div class="endofmain1 me-4" data-aos="fade-left">
+          <div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe.
+          </div>
+      </div>
+      <div class="endofmain2 ml-4" data-aos="fade-right">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, nobis.</div>
+      </div>
+      <div class="endofmain1 me-4" data-aos="fade-left">
+          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eveniet.</div>
+      </div>
+
+      <div class="endofmain2 ml-4" data-aos="fade-right">
+        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, nobis.</div>
+    </div>
+
+    <div class="endofmain1" data-aos="fade-left">
+      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eveniet.</div>
+  </div>
+
+      
+        
+      
+</main>
+
+{% endblock %}
+
+{% block custom_js %} 
+
+
+
+
+{% load static %}
+<script src="{% static 'home/js/home.js' %}"></script>    
+{% endblock %}
+

@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% block title%}Flick Vault{% endblock%}
+{% block custom_css %} 
+{% load static %}
+<link rel="stylesheet" href="{% static 'home/css/landingPage.css' %}">
+{% endblock %}
+{% block pagebody %}
+<div class="page_heading position-absolute top-50 start-50 translate-middle">
+    <!-- <p style="color: yellow;">FlickVault</p> -->
+    <h1 class="text">
+        <span class="letter letter-1">F</span>
+        <span class="letter letter-2">L</span>
+        <span class="letter letter-3">I</span>
+        <span class="letter letter-4">C</span>
+        <span class="letter letter-4">K</span>
+        <span class="letter letter-4">V</span>
+        <span class="letter letter-4">A</span>
+        <span class="letter letter-2">U</span>
+        <span class="letter letter-4">L</span>
+        <span class="letter letter-4">T</span>
+    </h1>
+
+    <!-- <a href="" 
+   style="font-size: 2rem; padding-top: 2px; padding-bottom: 10px; padding-left: 1rem; padding-right: 1rem; color: white; box-shadow: 0 0 0.5rem #00f0ff;" 
+   class="btn mt-5 btn-outline-light rounded-pill position-absolute top-70 start-50 translate-middle letter-border exp ">
+   explore
+</a> -->
+
+
+<a href="{% url 'homePage' %}" class='glowing-btn mt-5  position-absolute top-70 start-50 translate-middle letter-border'><span class='glowing-txt'>E<span class='faulty-letter'>X</span>PLORE</span></a>
+
+</div>
+
+<div class="letter" style="border: 2px solid white; height: 55vh; width: 55vw; border-radius: 20px; box-shadow: 0 0 1rem #00f0ff;"></div>
+
+</div>
+
+{% endblock %}
