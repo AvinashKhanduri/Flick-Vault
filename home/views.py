@@ -9,4 +9,7 @@ def landingPage(request):
 def homepage(request):
     movieData = Movie.objects.all()[:10]
     recommended = Movie.objects.all()[10:20]
-    return render(request,'home/home.html',context={"movieData":movieData,"recommended":recommended})
+    bollywood =Movie.objects.filter(region__iexact='Bollywood')
+    hollywood = Movie.objects.filter(region__iexact="Hollywood")
+
+    return render(request,'home/home.html',context={"movieData":movieData,"recommended":recommended,"bollywood":bollywood,"hollywood":hollywood})

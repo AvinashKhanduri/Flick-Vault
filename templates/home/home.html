@@ -133,34 +133,15 @@
       <div class="mt-5 gallery js-flickity"
       data-flickity-options='{ "wrapAround": true }'>
       
+      {% for i in recommended %}
       <div class="gallery-cell">
-        {% load static %}
-        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        <!-- {% load static %} -->
+         {% for poster in i.posters.all %}
+        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
+        {% endfor %}
       </div>
-      <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
+      {% endfor %}
+      
       </div>
 
 
@@ -178,34 +159,15 @@
       <div class="mt-5 gallery js-flickity"
       data-flickity-options='{ "wrapAround": true }'>
       
+      {% for i in bollywood  %}
       <div class="gallery-cell">
-        {% load static %}
-        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        <!-- {% load static %} -->
+         {% for poster in i.posters.all %}
+        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
+        {% endfor %}
       </div>
-      <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
+      {% endfor %}
+      
       </div>
 
 
@@ -223,35 +185,15 @@
       <div class="mt-5 gallery js-flickity"
       data-flickity-options='{ "wrapAround": true }'>
       
+      {% for i in  hollywood %}
       <div class="gallery-cell">
-        {% load static %}
-        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        <!-- {% load static %} -->
+         {% for poster in i.posters.all %}
+        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
+        {% endfor %}
       </div>
-      <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-          <p>Avengers</p>
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
+      {% endfor %}
+      
       </div>
 
 
