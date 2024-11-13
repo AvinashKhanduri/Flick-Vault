@@ -16,6 +16,7 @@
             <div>Upcoming</div>
             <div>About Us</div>
             <div>Contact Us</div>
+
             <a href="{% url 'register' %}" class="ms-2 btn rounded-pill btn-outline-light">Sign Up</a>
               <!-- <div class="profileImage"></div> -->
         </div>
@@ -26,167 +27,35 @@
     <section id="tranding">
        
         <div class="container">
-            <!-- <div class="container"> -->
-                <!-- <h3 class="text-center section-subheading">- Latest -</h3> -->
-                <!-- <h1 class="text-center section-heading">Latest Tranding Movies</h1> -->
-              <!-- </div> -->
+            
           <div class="swiper tranding-slider">
             <div class="swiper-wrapper">
               <!-- Slide-start -->
+              {% for movie in movieData %}
               <div class="swiper-slide tranding-slide">
-                <div class="tranding-slide-img">
-                {% load static %}
-                  <img src="{% static 'home/images/tranding-food-1 (38).png'%}" alt="Tranding">
-                </div>
-                <div class="tranding-slide-content">
-                  <h1 class="food-price">$20</h1>
-                  <div class="tranding-slide-content-bottom">
-                    <h2 class="food-name">
-                      Special Pizza
-                    </h2>
-                    <h3 class="food-rating">
-                      <span>4.5</span>
-                      <div class="rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-                    </h3>
+                  <div class="tranding-slide-img">
+                      {% for poster in movie.posters.all %}
+                          <img src="{{ poster.poster.url }}" alt="{{ movie.title }}">
+                      {% endfor %}
                   </div>
-                </div>
-              </div>
-              <!-- Slide-end -->
-              <!-- Slide-start -->
-              <div class="swiper-slide tranding-slide">
-                <div class="tranding-slide-img">
-                {% load static %}
-                  <img src="{% static 'home/images/tranding-food-2 (6).png'%}" alt="Tranding">
-                </div>
-                <div class="tranding-slide-content">
-                  <h1 class="food-price">$20</h1>
-                  <div class="tranding-slide-content-bottom">
-                    <h2 class="food-name">
-                      Special Pizza
-                    </h2>
-                    <h3 class="food-rating">
-                      <span>4.5</span>
-                      <div class="rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
+                  <div class="tranding-slide-content">
+                      <h1 class="food-price">$20</h1>
+                      <div class="tranding-slide-content-bottom">
+                          <h2 class="food-name">{{ movie.title }}</h2>
+                          <h3 class="food-rating">
+                              <span>4.5</span>
+                              <div class="rating">
+                                  <ion-icon name="star"></ion-icon>
+                                  <ion-icon name="star"></ion-icon>
+                                  <ion-icon name="star"></ion-icon>
+                                  <ion-icon name="star"></ion-icon>
+                                  <ion-icon name="star"></ion-icon>
+                              </div>
+                          </h3>
                       </div>
-                    </h3>
                   </div>
-                </div>
               </div>
-              <!-- Slide-end -->
-              <!-- Slide-start -->
-              <div class="swiper-slide tranding-slide">
-                <div class="tranding-slide-img">
-                {% load static %}
-                  <img src="{% static 'home/images/tranding-food-3 (1).png'%}" alt="Tranding">
-                </div>
-                <div class="tranding-slide-content">
-                  <h1 class="food-price">$20</h1>
-                  <div class="tranding-slide-content-bottom">
-                    <h2 class="food-name">
-                      Special Pizza
-                    </h2>
-                    <h3 class="food-rating">
-                      <span>4.5</span>
-                      <div class="rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              <!-- Slide-end -->
-              <!-- Slide-start -->
-              <div class="swiper-slide tranding-slide">
-                <div class="tranding-slide-img">
-                {% load static %}
-                  <img src="{% static 'home/images/tranding-food-4 (2).png'%}" alt="Tranding">
-                </div>
-                <div class="tranding-slide-content">
-                  <h1 class="food-price">$20</h1>
-                  <div class="tranding-slide-content-bottom">
-                    <h2 class="food-name">
-                      Special Pizza
-                    </h2>
-                    <h3 class="food-rating">
-                      <span>4.5</span>
-                      <div class="rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              <!-- Slide-end -->
-              <!-- Slide-start -->
-              <div class="swiper-slide tranding-slide">
-                <div class="tranding-slide-img">
-                {% load static %}
-                  <img src="{% static 'home/images/tranding-food-5 (1).png'%}" alt="Tranding">
-                </div>
-                <div class="tranding-slide-content">
-                  <h1 class="food-price">$20</h1>
-                  <div class="tranding-slide-content-bottom">
-                    <h2 class="food-name">
-                      Special Pizza
-                    </h2>
-                    <h3 class="food-rating">
-                      <span>4.5</span>
-                      <div class="rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-                    </h3>
-                  </div>
-                </div>
-              </div>
-              <!-- Slide-end -->
-              <!-- Slide-start -->
-              <div class="swiper-slide tranding-slide">
-                <div class="tranding-slide-img">
-                {% load static %}
-                  <img src="{% static 'home/images/tranding-food-6 (1).png'%}" alt="Tranding">
-                </div>
-                <div class="tranding-slide-content">
-                  <h1 class="food-price">$20</h1>
-                  <div class="tranding-slide-content-bottom">
-                    <h2 class="food-name">
-                      Special Pizza
-                    </h2>
-                    <h3 class="food-rating">
-                      <span>4.5</span>
-                      <div class="rating">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                      </div>
-                    </h3>
-                  </div>
-                </div>
-              </div>
+          {% endfor %}
             </div>
   
             <div class="tranding-slider-control">
@@ -214,35 +83,16 @@
      
       <div class="mt-5 gallery js-flickity"
       data-flickity-options='{ "wrapAround": true }'>
-      
+      {% for i in recommended %}
       <div class="gallery-cell">
-        {% load static %}
-        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        <!-- {% load static %} -->
+         {% for poster in i.posters.all %}
+        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
+        {% endfor %}
       </div>
-      <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
+      {% endfor %}
+
+     
       </div>
      
       <!-- Your Intrest -->
@@ -259,35 +109,15 @@
       <div class="mt-5 gallery js-flickity"
       data-flickity-options='{ "wrapAround": true }'>
       
+      {% for i in recommended %}
       <div class="gallery-cell">
-        {% load static %}
-        <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
+        <!-- {% load static %} -->
+         {% for poster in i.posters.all %}
+        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
+        {% endfor %}
       </div>
-      <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-        <div class="gallery-cell">
-          {% load static %}
-          <img src="{% static 'home/images/tranding-food-1 (38).png' %}" style="height: 20rem; border-radius: 20px;" alt="">
-        </div>
-      </div>
+      {% endfor %}
+     </div>
 
        <!--Explore more  -->
        <hr class="mt-5">
@@ -455,12 +285,7 @@
 </main>
 
 {% endblock %}
-
 {% block custom_js %} 
-
-
-
-
 {% load static %}
 <script src="{% static 'home/js/home.js' %}"></script>    
 {% endblock %}
