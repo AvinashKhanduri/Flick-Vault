@@ -7,224 +7,192 @@
 
 {% block pagebody %}
 
-<nav>
-    <div class="navContainer">
-        <div class="menu-icon" onclick="toggleMenu()">☰</div> <!-- Hamburger icon -->
-        <div class="nav-links">
-            <div>Home</div>
-            <div>Bookings</div>
-            <div>Upcoming</div>
-            <div>About Us</div>
-            <div>Contact Us</div>
+<div class="navbar">
+  <div class="navbar-container">
+      <div class="logo-container">
+          <h1 class="logo">FlickValut</h1>
+      </div>
+      <div class="menu-container">
+          <ul class="menu-list">
+              <li class="menu-list-item active">Home</li>
+              <li class="menu-list-item">Booking</li>
+              <li class="menu-list-item">Upcomming</li>
+              <li class="menu-list-item">About Us</li>
+              <li class="menu-list-item">Contact Us</li>
 
-            <a href="{% url 'register' %}" class="ms-2 btn rounded-pill btn-outline-light">Sign Up</a>
-              <!-- <div class="profileImage"></div> -->
-        </div>
-    </div>
-</nav>
+          </ul>
+      </div>
+      <div class="profile-container">
+          <img class="profile-picture" src="{% static 'home/img/profile.jpg' %}" alt="">
+          <div class="profile-text-container">
+              <span class="profile-text">Profile</span>
+              <i class="fas fa-caret-down"></i>
+          </div>
+          <div class="toggle">
+              <i class="fas fa-moon toggle-icon"></i>
+              <i class="fas fa-sun toggle-icon"></i>
+              <div class="toggle-ball"></div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="sidebar">
+  <i class="left-menu-icon fas fa-search"></i>
+  <i class="left-menu-icon fas fa-home"></i>
+  <i class="left-menu-icon fas fa-users"></i>
+  <i class="left-menu-icon fas fa-bookmark"></i>
+  <i class="left-menu-icon fas fa-tv"></i>
+  <i class="left-menu-icon fas fa-hourglass-start"></i>
+  <i class="left-menu-icon fas fa-shopping-cart"></i>
+</div>
+<div class="container">
+  <div class="content-container">
+      <div class="featured-content"
+          style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/static/home/img/f-1.jpg');">
+          <img class="featured-title" src="{% static 'home/img/f-t-1.png' %}" alt="">
+          <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+              deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
+              minima voluptatibus incidunt. Accusamus, provident.</p>
+          <button class="featured-button">WATCH</button>
+      </div>
 
-<main>
-    <section id="tranding">
-       
-        <div class="container">
-            
-          <div class="swiper tranding-slider">
-            <div class="swiper-wrapper">
-              <!-- Slide-start -->
-              {% for movie in movieData %}
-              <div class="swiper-slide tranding-slide">
-                  <div class="tranding-slide-img">
-                      {% for poster in movie.posters.all %}
-                          <img src="{{ poster.poster.url }}" alt="{{ movie.title }}">
+      <!-- Tranding -->
+      <div class="movie-list-container">
+          <h1 class="movie-list-title">Tranding</h1>
+          <div class="movie-list-wrapper">
+              <div class="movie-list">
+                {% for movie in movieData %}
+                  <div class="movie-list-item">
+                    {% for poster in movie.posters.all %}
+                      <img class="movie-list-item-img" src="{{ poster.poster.url }}" alt="">
                       {% endfor %}
+                      <span class="movie-list-item-title">{{ movie.title }}</span>
+                      <p class="movie-list-item-desc">{{ movie.sort_Description }}</p>
+                      <a class="movie-list-item-button" href="{% url 'movieDetailPage' movie.uid %}">Explore</a>
                   </div>
-                  <div class="tranding-slide-content">
-                      <h1 class="food-price">$20</h1>
-                      <div class="tranding-slide-content-bottom">
-                          <h2 class="food-name">{{ movie.title }}</h2>
-                          <h3 class="food-rating">
-                              <span>4.5</span>
-                              <div class="rating">
-                                  <ion-icon name="star"></ion-icon>
-                                  <ion-icon name="star"></ion-icon>
-                                  <ion-icon name="star"></ion-icon>
-                                  <ion-icon name="star"></ion-icon>
-                                  <ion-icon name="star"></ion-icon>
-                              </div>
-                          </h3>
-                      </div>
-                  </div>
-              </div>
-          {% endfor %}
-            </div>
-  
-            <div class="tranding-slider-control">
-             
-              <div class="swiper-pagination"></div>
-            </div>
-  
+                  {% endfor %}
+                </div>
+              <i class="fas fa-chevron-right arrow"></i>
           </div>
-        </div>
-  </section>
-      
+      </div>
+
       <!-- Recommanded -->
-       <hr>
-      <h2 class="m-3" data-aos="fade-up"
-      
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="false"
-      data-aos-anchor-placement="top-center" >Recommanded</h2>
-      
-      
-
-     
-      <div class="mt-5 gallery js-flickity"
-      data-flickity-options='{ "wrapAround": true }'>
-      {% for i in recommended %}
-      <div class="gallery-cell">
-        <!-- {% load static %} -->
-         {% for poster in i.posters.all %}
-        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
-        {% endfor %}
-      </div>
-      {% endfor %}
-
-     
-      </div>
-     
-      <!-- Your Intrest -->
-       <hr class="mt-5">
-      <h2 class="m-3" data-aos="fade-up"
-      
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="false"
-      data-aos-anchor-placement="top-center" >Your Intrest</h2>
-
-      <div class="mt-5 gallery js-flickity"
-      data-flickity-options='{ "wrapAround": true }'>
-      
-      {% for i in recommended %}
-      <div class="gallery-cell">
-        <!-- {% load static %} -->
-         {% for poster in i.posters.all %}
-        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
-        {% endfor %}
-      </div>
-      {% endfor %}
-     </div>
-
-       <!--Explore more  -->
-       <hr class="mt-5">
-      <h2 class="m-3" data-aos="fade-up"
-      
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="false"
-      data-aos-anchor-placement="top-center" >Explore more</h2>
-
-      <div class="mt-5 gallery js-flickity"
-      data-flickity-options='{ "wrapAround": true }'>
-      
-      {% for i in recommended %}
-      <div class="gallery-cell">
-        <!-- {% load static %} -->
-         {% for poster in i.posters.all %}
-        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
-        {% endfor %}
-      </div>
-      {% endfor %}
-      
-      </div>
-
-
-       <!-- Bollywood -->
-       <hr class="mt-5">
-      <h2 class="m-3" data-aos="fade-up"
-      
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="false"
-      data-aos-anchor-placement="top-center" >Bollywood</h2>
-
-      <div class="mt-5 gallery js-flickity"
-      data-flickity-options='{ "wrapAround": true }'>
-      
-      {% for i in bollywood  %}
-      <div class="gallery-cell">
-        <!-- {% load static %} -->
-         {% for poster in i.posters.all %}
-        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
-        {% endfor %}
-      </div>
-      {% endfor %}
-      
-      </div>
-
-
-      <!-- Hollywood -->
-      <hr class="mt-5">
-      <h2 class="m-3" data-aos="fade-up"
-      
-      data-aos-delay="50"
-      data-aos-duration="1000"
-      data-aos-easing="ease-in-out"
-      data-aos-mirror="true"
-      data-aos-once="false"
-      data-aos-anchor-placement="top-center" >Hollywood</h2>
-
-      <div class="mt-5 gallery js-flickity"
-      data-flickity-options='{ "wrapAround": true }'>
-      
-      {% for i in  hollywood %}
-      <div class="gallery-cell">
-        <!-- {% load static %} -->
-         {% for poster in i.posters.all %}
-        <img src="{{ poster.poster.url }}" style="height: 20rem; border-radius: 20px;" alt="">
-        {% endfor %}
-      </div>
-      {% endfor %}
-      
-      </div>
-
-
-
-
-      <!-- end of main style="height: 5rem; width: 100vw; border: 1px solid white;" -->
-
-      <div class="endofmain1 me-4" data-aos="fade-left">
-          <div>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, saepe.
+      <div class="movie-list-container">
+          <h1 class="movie-list-title">Recommanded</h1>
+          <div class="movie-list-wrapper">
+              <div class="movie-list">
+                {% for movie in recommended %}
+                <div class="movie-list-item">
+                  {% for poster in movie.posters.all %}
+                    <img class="movie-list-item-img" src="{{ poster.poster.url }}" alt="">
+                    {% endfor %}
+                    <span class="movie-list-item-title">{{ movie.title }}</span>
+                    <p class="movie-list-item-desc">{{ movie.sort_Description }}</p>
+                    <a class="movie-list-item-button" href="{% url 'movieDetailPage' movie.uid %}">Explore</a>
+                </div>
+                {% endfor %}
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
           </div>
       </div>
-      <div class="endofmain2 ml-4" data-aos="fade-right">
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, nobis.</div>
+      <div class="featured-content"
+          style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/static/home/img/f-2.jpg');">
+          <img class="featured-title" src="{% static 'home/img/f-t-2.png' %}" alt="">
+          <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+              deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
+              minima voluptatibus incidunt. Accusamus, provident..... do tit it t</p>
+          <button class="featured-button">WATCH</button>
       </div>
-      <div class="endofmain1 me-4" data-aos="fade-left">
-          <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eveniet.</div>
+      <div class="movie-list-container">
+          <h1 class="movie-list-title">Your Intrest</h1>
+          <div class="movie-list-wrapper">
+              <div class="movie-list">
+                   {% for movie in recommended %}
+                  <div class="movie-list-item">
+                    {% for poster in movie.posters.all %}
+                      <img class="movie-list-item-img" src="{{ poster.poster.url }}" alt="">
+                      {% endfor %}
+                      <span class="movie-list-item-title">{{ movie.title }}</span>
+                      <p class="movie-list-item-desc">{{ movie.sort_Description }}</p>
+                      <a class="movie-list-item-button" href="{% url 'movieDetailPage' movie.uid %}">Explore</a>
+                  </div>
+                  {% endfor %}
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+          </div>
+      </div>
+      <div class="movie-list-container">
+          <h1 class="movie-list-title">NEW RELEASES</h1>
+          <div class="movie-list-wrapper">
+              <div class="movie-list">
+                {% for movie in recommended %}
+                <div class="movie-list-item">
+                  {% for poster in movie.posters.all %}
+                    <img class="movie-list-item-img" src="{{ poster.poster.url }}" alt="">
+                    {% endfor %}
+                    <span class="movie-list-item-title">{{ movie.title }}</span>
+                    <p class="movie-list-item-desc">{{ movie.sort_Description }}</p>
+                    <a class="movie-list-item-button" href="{% url 'movieDetailPage' movie.uid %}">Explore</a>
+                </div>
+                {% endfor %}
+              </div>
+              <i class="fas fa-chevron-right arrow"></i>
+          </div>
       </div>
 
-      <div class="endofmain2 ml-4" data-aos="fade-right">
-        <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, nobis.</div>
+      <div class="featured-content"
+          style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('/static/home/img/f-2.jpg');">
+          <img class="featured-title" src="{% static 'home/img/f-t-2.png' %}" alt="">
+          <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+              deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
+              minima voluptatibus incidunt. Accusamus, provident..... do tit it t</p>
+          <button class="featured-button">WATCH</button>
+      </div>
+
+      <div class="movie-list-container">
+        <h1 class="movie-list-title">Bollywood</h1>
+        <div class="movie-list-wrapper">
+            <div class="movie-list">
+              {% for movie in bollywood %}
+              <div class="movie-list-item">
+                {% for poster in movie.posters.all %}
+                  <img class="movie-list-item-img" src="{{ poster.poster.url }}" alt="">
+                  {% endfor %}
+                  <span class="movie-list-item-title">{{ movie.title }}</span>
+                  <p class="movie-list-item-desc">{{ movie.sort_Description }}</p>
+                  <a class="movie-list-item-button" href="{% url 'movieDetailPage' movie.uid %}">Explore</a>
+              </div>
+              {% endfor %}
+                
+            </div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
     </div>
 
-    <div class="endofmain1" data-aos="fade-left">
-      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eveniet.</div>
+    <div class="movie-list-container">
+      <h1 class="movie-list-title">Hollywood</h1>
+      <div class="movie-list-wrapper">
+          <div class="movie-list">
+            {% for movie in hollywood %}
+            <div class="movie-list-item">
+              {% for poster in movie.posters.all %}
+                <img class="movie-list-item-img" src="{{ poster.poster.url }}" alt="">
+                {% endfor %}
+                <span class="movie-list-item-title">{{ movie.title }}</span>
+                <p class="movie-list-item-desc">{{ movie.sort_Description }}</p>
+                <a class="movie-list-item-button" href="{% url 'movieDetailPage' movie.uid %}">Explore</a>
+            </div>
+            {% endfor %}
+              
+          </div>
+          <i class="fas fa-chevron-right arrow"></i>
+      </div>
   </div>
 
-      
-        
-      
-</main>
+
+  </div>
+</div>
+
 
 {% endblock %}
 {% block custom_js %} 

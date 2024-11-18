@@ -5,7 +5,180 @@
 <link rel="stylesheet" href="{% static 'booking/css/movieDetail.css' %}">
 {% endblock %}
 {% block pagebody %}
-<h1>
-    movieDetailpage
-</h1>
+<div class="movie-card">
+  
+    <div class="container">
+      {% for poster in movie.posters.all %}
+      <div class="hero" style="background-image: url('{{ movie.posters.first.poster.url }}'); background-repeat: no-repeat;background-size: cover; background-position:top; border-top-left-radius: 5px; border-top-right-radius: 5px;">
+              {% endfor %}
+              <div class="details">
+        
+                <div class="title1">{{ movie.title }}<span>PG-13</span></div>
+        
+                <div class="title2">{{ movie.sort_Description }}</div>    
+                
+                <fieldset class="rating">
+            <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+            <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
+            <input type="radio" id="star4" name="rating" value="4" checked /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+            <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
+            <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+            <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
+            <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+            <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
+            <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+            <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+          </fieldset>
+                
+                <span class="likes">109 likes</span>
+                
+              </div> <!-- end details -->
+      </div> <!-- end hero -->
+      
+      
+      <div class="description">
+        
+        <div class="column1">
+          <span class="tag" style="color: black;">action</span>
+          <span class="tag" style="color: black;">fantasy</span>
+          <span class="tag" style="color: black;">adventure</span>
+        </div> <!-- end column1 -->
+        
+        <div class="column2">
+          
+          <p>{{ movie.long_Description }} <a href="#">read more</a></p>
+
+          <div class="d-grid gap-2 col-6 mx-auto pt-5 p-5 w-50 ">
+            <a href="{% url 'bookingpage' %}" class="btn btn-outline-light rounded-pill" type="button">Book Now</a>
+          </div>
+      </div> <!-- end column2 -->
+        
+      </div> <!-- end description -->
+      
+     
+    </div> <!-- end container -->
+    
+  </div> <!-- end movie-card -->
+
+  
+  
+    
+    <div id="carouselExample" class="carousel slide">
+     
+      <div class="carousel-inner">
+        <div class="castheading ps-5" style="color:white" >
+          <h2 class="ms-5">Cast</h2>
+        </div>
+        <div class="carousel-item active">
+          <div class="avatars">
+          <figure class="fir-image-figure">
+
+            <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+              <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+              <div class="fir-imageover-color"></div>
+              
+            </a>
+          
+            <figcaption>
+              <div class="fig-author-figure-title">David East</div>
+              <div class="fig-author-figure-title">Engineer at Google on Firebase.</div>
+              <div class="fig-author-figure-title">Jan. 16th, 2017 &#8212; 5m read</div>
+            </figcaption>
+          </figure>
+      
+          <figure class="fir-image-figure">
+      
+            <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+              <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+              <div class="fir-imageover-color"></div>
+              
+            </a>
+          
+            <figcaption>
+              <div class="fig-author-figure-title">David East</div>
+              <div class="fig-author-figure-title">Engineer at Google on Firebase.</div>
+              <div class="fig-author-figure-title">Jan. 16th, 2017 &#8212; 5m read</div>
+            </figcaption>
+          </figure>
+      
+          <figure class="fir-image-figure">
+      
+            <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+              <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+              <div class="fir-imageover-color"></div>
+              
+            </a>
+          
+            <figcaption>
+              <div class="fig-author-figure-title">David East</div>
+              <div class="fig-author-figure-title">Engineer at Google on Firebase.</div>
+              <div class="fig-author-figure-title">Jan. 16th, 2017 &#8212; 5m read</div>
+            </figcaption>
+          </figure>
+        </div>
+        </div>
+        <div class="carousel-item">
+          <div class="avatars">
+            <figure class="fir-image-figure">
+  
+              <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                <div class="fir-imageover-color"></div>
+                
+              </a>
+            
+              <figcaption>
+                <div class="fig-author-figure-title">David East</div>
+                <div class="fig-author-figure-title">Engineer at Google on Firebase.</div>
+                <div class="fig-author-figure-title">Jan. 16th, 2017 &#8212; 5m read</div>
+              </figcaption>
+            </figure>
+        
+            <figure class="fir-image-figure">
+        
+              <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                <div class="fir-imageover-color"></div>
+                
+              </a>
+            
+              <figcaption>
+                <div class="fig-author-figure-title">David East</div>
+                <div class="fig-author-figure-title">Engineer at Google on Firebase.</div>
+                <div class="fig-author-figure-title">Jan. 16th, 2017 &#8212; 5m read</div>
+              </figcaption>
+            </figure>
+        
+            <figure class="fir-image-figure">
+        
+              <a class="fir-imageover" rel="noopener" target="_blank" href="https://twitter.com/_davideast">
+                <img class="fir-author-image fir-clickcircle" src="https://fir-rollup.firebaseapp.com/de-sm.jpg" alt="David East - Author">
+                <div class="fir-imageover-color"></div>
+                
+              </a>
+            
+              <figcaption>
+                <div class="fig-author-figure-title">David East</div>
+                <div class="fig-author-figure-title">Engineer at Google on Firebase.</div>
+                <div class="fig-author-figure-title">Jan. 16th, 2017 &#8212; 5m read</div>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+        
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    
+
+    
+
+  <!-- </div>  -->
 {% endblock %}
