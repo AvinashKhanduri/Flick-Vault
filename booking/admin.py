@@ -20,3 +20,4 @@ class ScreenAdmin(admin.ModelAdmin):
 # Register your models with the admin site
 admin.site.register(Theater, TheaterAdmin)
 admin.site.register(Screen, ScreenAdmin)
+admin.site.register(Show)
