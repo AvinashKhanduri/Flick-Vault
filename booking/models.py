@@ -9,8 +9,15 @@ class Screen(baseModel):
     total_seats = models.IntegerField()
     theater = models.ForeignKey(Theater,on_delete=models.CASCADE,related_name="screens")
 
-    # def __str__(self):
-        # return f"screen number {self.screen_number}"
+    class Meta:
+        ordering = ['screen_number']  # Order by screen_number ascending
+        verbose_name = "Screen"
+        verbose_name_plural = "Screens"
+
+    def __str__(self):
+        return f"Theater: {self.theater.name}, Screen number: {self.screen_number}"
+    
+    
     
 class Show(baseModel):
     show_time = models.TimeField()
