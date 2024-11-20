@@ -10,5 +10,17 @@ def movieDetailPage(request, movie_id):
     
 
 def bookingPage(request):
-    return render(request,"booking/bookingPage.html")
+    theater = Theater.objects.all()
+    city = set()
+    for i in theater:
+        city.add(i.city)
+
+    return render(request,"booking/bookingPage.html" ,context={"cities":city})
+
+def selectCity(request, city):
+    try:
+        theater = Theater.objects.get(city=city)
+        return render(request,"booking/bookingPage.html", content_type={"theaters":theater})
+    except Exception as e:
+        return render(render,"404.html")
 
