@@ -4,6 +4,7 @@ from home.models import *
 from accounts.models import *
 from payments.models import Payment
 
+
 class Screen(baseModel):
     screen_number = models.IntegerField()
     total_seats = models.IntegerField()

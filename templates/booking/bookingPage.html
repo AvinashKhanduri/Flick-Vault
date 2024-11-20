@@ -159,42 +159,43 @@
     </div>
    </div> -->
 
-   {% for i in theaters %}
+   {% for theater in theaters %}
+<div style="background: linear-gradient(to right, #1c1c29, #29293d); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" class="container mt-4">
+    <div class="row bg-gradient p-3 align-items-center shadow rounded text-light">
+        <!-- Theater Info -->
+        <div class="col-md-4 col-12 mb-3 mb-md-0">
+            <h5 class="fw-bold mb-1">{{ theater.name }}</h5>
+            <p style="color: white;" class=" mb-1">{{ theater.location }}</p>
+            <span class="badge bg-warning text-dark">Dolby Atmos</span>
+        </div>
 
-   <div style="background: linear-gradient(to right, #1c1c29, #29293d); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" class="container mt-4">
-    <div  class="row bg-gradient p-3 align-items-center shadow rounded text-light">
-      <!-- Movie and Theater Info -->
-      <div  class="col-md-4 col-12 mb-3 mb-md-0">
-        <h5 class="fw-bold mb-1">{{ i.name }}</h5>
-        <p style="color: white;" class=" mb-1">{{ i.loacation }}</p>
-        <span class="badge bg-warning text-dark">Dolby Atmos</span>
-      </div>
-  
-      <!-- Show Timing -->
-      <div class="col-md-4 col-6 text-center">
-        <div class="d-flex flex-column align-items-center">
-          <h6 class="fw-bold mb-1">Show Timing</h6>
-          <p class="mb-0">7:30 PM</p>
+        <!-- Show Timing -->
+        <div class="col-md-4 col-6 text-center">
+            <div class="d-flex flex-column align-items-center">
+                <h6 class="fw-bold mb-1">Show Timing</h6>
+                {% for show in theater.shows.all %}  <!-- Access shows related to the theater -->
+                    <p class="mb-0">{{ show.show_time }}</p>
+                {% empty %}
+                    <p>No shows available</p>  <!-- Message if there are no shows -->
+                {% endfor %}
+            </div>
         </div>
-      </div>
-  
-      <!-- Ticket Prices -->
-      <div class="col-md-3 col-6 text-center">
-        <div class="d-flex flex-column align-items-center">
-          <h6 class="fw-bold mb-1">Ticket Prices</h6>
-          <p class="mb-0">$10 - $20</p>
+
+        <!-- Ticket Prices (You can modify this as per your requirement) -->
+        <div class="col-md-3 col-6 text-center">
+            <div class="d-flex flex-column align-items-center">
+                <h6 class="fw-bold mb-1">Ticket Prices</h6>
+                <p class="mb-0">$10 - $20</p>
+            </div>
         </div>
-      </div>
-  
-      <!-- Booking Button -->
-      <div class="col-md-1 col-12 text-center mt-3 mt-md-0">
-        <a href="#" class="btn btn-outline-light btn-sm rounded-pill w-100">Book Now</a>
-      </div>
+
+        <!-- Booking Button -->
+        <div class="col-md-1 col-12 text-center mt-3 mt-md-0">
+            <a href="#" class="btn btn-outline-light btn-sm rounded-pill w-100">Book Now</a>
+        </div>
     </div>
-  </div>
-
-  {% endfor %}
-
+</div>
+{% endfor %}
 
 
 
