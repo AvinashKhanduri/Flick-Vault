@@ -1,39 +1,3 @@
-
-
-// var TrandingSlider = new Swiper('.tranding-slider', {
-//     effect: 'coverflow',
-//     grabCursor: true,
-//     centeredSlides: true,
-//     loop: true,
-//     slidesPerView: 'auto',
-//     coverflowEffect: {
-//       rotate: 0,
-//       stretch: 0,
-//       depth: 100,
-//       modifier: 2.5,
-//     },
-//     autoplay:{
-//         delay: 2000,
-//     }
-//     ,
-//     pagination: {
-//       el: '.swiper-pagination',
-//       clickable: true,
-//     },
-//     navigation: {
-//       nextEl: '.swiper-button-next',
-//       prevEl: '.swiper-button-prev',
-//     }
-//   });
-
-//   function toggleMenu() {
-//     const navLinks = document.querySelector('.nav-links');
-//     navLinks.classList.toggle('active'); // Toggle the 'active' class
-// }
-
-
-
-
 const arrows = document.querySelectorAll(".arrow");
 const movieLists = document.querySelectorAll(".movie-list");
 
@@ -69,3 +33,12 @@ ball.addEventListener("click", () => {
   });
   ball.classList.toggle("active");
 });
+
+
+// bootstrap model
+const myModal = document.getElementById('modal')
+const myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', () => {
+  myInput.focus()
+})

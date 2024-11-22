@@ -60,6 +60,16 @@ def RegisterPage(request):
         return HttpResponseRedirect(request.path_info)
     return render(request,'accounts/register.html')
 
+def logOutUser(request):
+    # Log out the user
+    logout(request)
+    
+    # Debug: print the path to ensure it's correct
+    print("Redirecting to:", request.path_info)
+    
+    # Redirect to the same page after logout
+    return render(request,'home/landingPage.html')
+
 def activate_account(request,email_token):
     try:
          user = profile.objects.get(email_token = email_token)
