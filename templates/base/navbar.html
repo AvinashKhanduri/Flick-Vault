@@ -1,0 +1,47 @@
+{% load static %}
+<link rel="stylesheet" href="{%  static 'base/css/navbar.css'%}">
+<div class="navbar">
+    <div class="navbar-container">
+        <div class="logo-container">
+            <h1 class="logo">FlickValut</h1>
+        </div>
+        <div class="menu-container">
+            <ul class="menu-list">
+                <li class="menu-list-item active">Home</li>
+                <li class="menu-list-item">Booking</li>
+                <li class="menu-list-item">Upcomming</li>
+                <li class="menu-list-item">About Us</li>
+                <li class="menu-list-item">Contact Us</li>
+  
+            </ul>
+        </div>
+        <div class="profile-container">
+            <!-- <img class="profile-picture" src="{% static 'home/img/profile.jpg' %}" alt="">
+            <div class="profile-text-container">
+                <span class="profile-text">Profile</span>
+                <i class="fas fa-caret-down"></i>
+            </div>
+            <div class="toggle">
+                <i class="fas fa-moon toggle-icon"></i>
+                <i class="fas fa-sun toggle-icon"></i>
+                <div class="toggle-ball"></div>
+            </div> -->
+            {% if user.is_authenticated %}
+            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              logout
+            </button>
+            
+                {% else %}
+                <a href="{% url 'login' %}" type="button " class="btn btn-outline-light rounded-pill">
+                  login
+                </a>
+                
+              {% endif %}
+            
+        </div>
+       
+    </div>
+  </div
+
+
+

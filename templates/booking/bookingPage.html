@@ -15,22 +15,21 @@
             <ul class="menu-list">
                 <li class="menu-list-item active">Home</li>
                 <li class="menu-list-item">Booking</li>
-                <li class="menu-list-item">Upcomming</li>
+                <li class="menu-list-item">Upcoming</li>
                 <li class="menu-list-item">About Us</li>
                 <li class="menu-list-item">Contact Us</li>
-                <li class="menu-list-item"><div class="dropdown">
-                    <button style="color: white; border: 1px solid white;" class="btn  dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <li class="menu-list-item">
+                    <div class="dropdown">
+                        <button style="color: white; border: 1px solid white;" class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Select City
-                    </button>
-                    <ul class="dropdown-menu">
-                      {% for i in cities %}
-                      <li><a class="dropdown-item" href="{% url 'seleccity' i %}">{{i}}</a></li>
-                      {% endfor %}
-                      <!-- <li><a class="dropdown-item" href="#">Another action</a></li>
-                      <li><a class="dropdown-item" href="#">Something else here</a></li> -->
-                    </ul>
-                  </div></li>
-  
+                        </button>
+                        <ul class="dropdown-menu">
+                            {% for i in cities %}
+                                <li><a class="dropdown-item" href="{% url 'selectcity' city=i movie_id=movie.uid %}">{{ i }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </li>
             </ul>
         </div>
         <div class="profile-container">
@@ -46,216 +45,117 @@
             </div>
         </div>
     </div>
-  </div>
+</div>
 
-
-  <!-- movie detail card -->
-
-  <div class="movie_card" id="tomb">
-    <div class="info_section">
-      <div class="movie_header">
-        <img class="locandina" src="https://movieplayer.net-cdn.it/t/images/2017/12/20/bright_jpg_191x283_crop_q85.jpg"/>
-        <h1>Bright</h1>
-        <h4>2017, David Ayer</h4>
-        <span class="minutes">117 min</span>
-        <p class="type">Action, Crime, Fantasy</p>
-      </div>
-      <div class="movie_desc">
-        <p class="text">
-          Set in a world where fantasy creatures live side by side with humans. A human cop is forced to work with an Orc to find a weapon everyone is prepared to kill for. 
-        </p>
-
-          <!-- date slider -->
-   <div class="corousalContainer">
-    <div id="carouselExample" class="carousel slide">
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="showDateContainer">
-                <div class="showDate">
-    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                
-            </div>
-            
-          </div>
-          <div class="carousel-item">
-            <div class="showDateContainer">
-                <div class="showDate">
-    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                
-                
-            </div>
-            
-          </div>
-          <div class="carousel-item">
-            <div class="showDateContainer">
-                <div class="showDate">
-    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                <div class="showDate">
-                    
-                </div>
-                <div class="showDate">
-                    
-                
-                
-            </div>
-            
-          </div>
+<!-- movie detail card -->
+<div class="movie_card" id="tomb" >
+    <div class="info_section"  style="background-image: url('{{ movie.posters.first.poster.url }}'); background-position:top; background-repeat: no-repeat; background-size: cover; ">
+        <div class="movie_header" >
+      <h1 style="color: white; background: rgba(0, 0, 0, 0.9);font-weight: 600; font-size: 2.5rem; backdrop-filter: blur(10px); width: fit-content;">{{ movie.title }}</h1>
+            <h4 style="background: rgba(0, 0, 0, 0.9); color: white; font-weight: 500; font-size: 1.5rem; backdrop-filter: blur(10px); width: fit-content;">2017, David Ayer</h4>
+            <span class="minutes" style="color: white; font-weight: 500; font-size: 1.5rem; font-weight: 500; font-size: 1.5rem; background: rgba(0, 0, 0, 0.9); backdrop-filter: blur(10px); width: fit-content;">{{ movie.duration }}</span>
+            <p class="type" style="background: rgba(0, 0, 0, 0.9);font-weight: 500; font-size: 1.5rem; color: white; backdrop-filter: blur(10px); width: fit-content;">{{ movie.genre }}</p>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
-    </div>
-      </div>
-
-      
-
-      
+        <div class="movie_desc">
+            <p class="text" style="background: rgba(0, 0, 0, 0.9); color: white; font-weight: 500; font-size: 1.5rem; backdrop-filter: blur(10px); width: fit-content;">{{ movie.sort_Description }}</p>
+            <div class="corousalContainer">
+                <div id="carouselExample" class="carousel slide">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="showDateContainer">
+                                <div class="showDate"></div>
+                                <div class="showDate"></div>
+                                <div class="showDate"></div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="showDateContainer">
+                                <div class="showDate"></div>
+                                <div class="showDate"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="blur_back bright_back"></div>
-  </div>
-  <!-- detail card ends -->
+</div>
 
-  <!-- show list -->
-   <!-- <div class="showlistContainer">
-    <div class="showlistinnerContainer">
-        <div class="showcardRow">
-            <div class="showcardDeatils">
-                <p>
-                    Ajango cenema cinex(w) newly renowated
-                </p>
-            </div>
-         </div>
-    </div>
-   </div> -->
-
-   {% for theater in theaters %}
+<!-- Show details -->
+{% if shows %}
+{% for show in shows %}
 <div style="background: linear-gradient(to right, #1c1c29, #29293d); border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);" class="container mt-4">
     <div class="row bg-gradient p-3 align-items-center shadow rounded text-light">
-        <!-- Theater Info -->
         <div class="col-md-4 col-12 mb-3 mb-md-0">
-            <h5 class="fw-bold mb-1">{{ theater.name }}</h5>
-            <p style="color: white;" class=" mb-1">{{ theater.location }}</p>
+            <h5 class="fw-bold mb-1">{{ show.theater.name }}</h5>
+            <p class="mb-1">{{ show.theater.location }}</p>
             <span class="badge bg-warning text-dark">Dolby Atmos</span>
         </div>
-
-        <!-- Show Timing -->
         <div class="col-md-4 col-6 text-center">
             <div class="d-flex flex-column align-items-center">
                 <h6 class="fw-bold mb-1">Show Timing</h6>
-                {% for show in theater.shows.all %}  <!-- Access shows related to the theater -->
-                    <p class="mb-0">{{ show.show_time }}</p>
-                {% empty %}
-                    <p>No shows available</p>  <!-- Message if there are no shows -->
-                {% endfor %}
+                <p class="mb-0">{{ show.show_time }}</p>
             </div>
         </div>
-
-        <!-- Ticket Prices (You can modify this as per your requirement) -->
         <div class="col-md-3 col-6 text-center">
             <div class="d-flex flex-column align-items-center">
                 <h6 class="fw-bold mb-1">Ticket Prices</h6>
-                <p class="mb-0">$10 - $20</p>
+                <p class="mb-0">{{ show.ticket_price }}</p>
             </div>
         </div>
-
-        <!-- Booking Button -->
         <div class="col-md-1 col-12 text-center mt-3 mt-md-0">
-            <a href="#" class="btn btn-outline-light btn-sm rounded-pill w-100">Book Now</a>
+            <a href="{% url 'selectSeat' show.uid %}" class="btn btn-outline-light btn-sm rounded-pill w-100">Book Now</a>
         </div>
     </div>
 </div>
 {% endfor %}
+{% else %}
+    <!-- If no shows exist, display this message -->
+    <p>No shows available for this movie in this city.</p>
+  {% endif %}
 
-
-
-
-
-  <!-- footer -->
-  <div style="margin-top: 7rem;" class="footer">
+<!-- footer -->
+<div style="margin-top: 7rem;" class="footer">
     <div class="footer-top">
-      <div class="container">
-        <div class="row">
-          <!-- Address Section -->
-          <div class="col-md-4">
-            <h5 class="footer-title">Address</h5>
-            <p>Corporate Office: Doon House, B-275(A), First Floor, Sector-57, Gurugram, Haryana, 122001</p>
-            <p>Reg. Office: Doon House, D2/3, 4th Floor, Chandra Tower, Mango, Jamshedpur, Jharkhand, 831012</p>
-          </div>
-  
-          <!-- Links Section -->
-          <div class="col-md-4">
-            <h5 class="footer-title">Quick Links</h5>
-            <ul class="footer-links">
-              <li><a href="#">Support</a></li>
-              <li><a href="#">Contact Us</a></li>
-              <li><a href="#">Disclaimer</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-            </ul>
-          </div>
-  
-          <!-- Social Media Section -->
-          <div class="col-md-4">
-            <h5 class="footer-title">Follow Us</h5>
-            <div class="footer-socials">
-              <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-              <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5 class="footer-title">Address</h5>
+                    <p>Corporate Office: Doon House, B-275(A), First Floor, Sector-57, Gurugram, Haryana, 122001</p>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-title">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Support</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5 class="footer-title">Follow Us</h5>
+                    <div class="footer-socials">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    
-  </div>
-  
-
-
-
-
-  <!-- {% include "base/footer.html" %} -->
+</div>
 
 {% endblock %}
 
 {% block custom_js %}
-
-    <script>
-        const myCarouselElement = document.querySelector('#carouselExample')
-
-const carousel = new bootstrap.Carousel(myCarouselElement, {
-    wrap:false
-})
-    </script>
+<script>
+    const myCarouselElement = document.querySelector('#carouselExample');
+    const carousel = new bootstrap.Carousel(myCarouselElement, { wrap: false });
+</script>
 {% endblock %}

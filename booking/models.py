@@ -23,14 +23,15 @@ class Screen(baseModel):
 class Show(baseModel):
     show_time = models.TimeField()
     date = models.DateField()
+    ticket_price = models.DecimalField(max_digits=10, decimal_places=2,default=100.0)
     movie = models.ForeignKey(Movie,on_delete=models.CASCADE,related_name="shows")
     screen = models.ForeignKey(Screen,on_delete=models.CASCADE,related_name="shows")
     theater = models.ForeignKey(Theater,on_delete=models.CASCADE,related_name="shows")
 
-    # class Meta:
-    #     constrain = [
-    #         models.UniqueConstraint(fields=['date', 'show_time', 'screen'], name='unique_show'),
-    #     ]
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['date', 'show_time', 'screen'], name='unique_show'),
+        ]
     
     def __str__(self):
         return f"{self.movie.title} at {self.theater.name} date {self.date}"
