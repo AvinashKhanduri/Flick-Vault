@@ -7,3 +7,4 @@ urlpatterns = [
     path("city/<city>/<movie_id>/", selectCity, name="selectcity"),  # Modified to include both city and movie_id
     path("bookSeat/<show_id>/", selectSeat,name="selectSeat"),
 ] 
+   

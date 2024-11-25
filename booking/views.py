@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from home.models import *
 from booking.models import *
+from django.http import Http404
 # Create your views here.
 def movieDetailPage(request, movie_id):
     try:
@@ -49,11 +50,29 @@ def selectCity(request, city, movie_id):
         return render(request, "404.html")  # Handle case when movie does not exist
 
 def selectSeat(request, show_id):
-    show = Show.objects.get(uid = show_id)
-    screen = show.screen
-    seats = Seat.objects.filter(screen=screen)
-
-    return render(request, "booking/seatSelection.html",context={"show":show,"seats":seats})
-
+    try:
+        # Get the show instance based on the provided show_id
+        show = Show.objects.get(uid=show_id)
+        
+        # Log show and screen details
+        print(f"Show: {show}, Screen: {show.screen}")
+        
+        # Get the screen associated with the show
+        screen = show.screen
+        
+        # Retrieve all seats related to this screen
+        seats = Seat.objects.filter(screen=screen)
+        
+        # Log retrieved seats
+        print(f"Seats: {seats}")
+        
+        if not seats.exists():
+            print("No seats found for the selected screen.")
+        
+        # Render the seat selection template with the necessary context
+        return render(request, "booking/seatSelection.html", context={"show": show, "seats": seats})
+    
+    except Show.DoesNotExist:
+        raise Http404("Show not found.")
 
 
