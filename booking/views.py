@@ -7,6 +7,9 @@ import random
 import datetime
 from payments.models import *
 from base.emails import send_ticket_booking_email
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 def movieDetailPage(request, movie_id):
     try:
@@ -54,6 +57,7 @@ def selectCity(request, city, movie_id):
     except Movie.DoesNotExist:
         return render(request, "404.html")  # Handle case when movie does not exist
 
+@login_required(redirect_field_name="login")
 def selectSeat(request, show_id):
     try:
         # Get the show instance based on the provided show_id
