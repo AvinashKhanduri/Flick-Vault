@@ -6,6 +6,7 @@
 {% endblock %}
 
 {% block pagebody %}
+{% include 'base/logoutModel.html' %}
 
 <div class="navbar">
   <div class="navbar-container">
@@ -14,11 +15,11 @@
       </div>
       <div class="menu-container">
           <ul class="menu-list">
-              <li class="menu-list-item active">Home</li>
-              <li class="menu-list-item">Booking</li>
+            <li class="menu-list-item"><a href="{% url 'homePage' %}">Home</a></li>
+              <li class="menu-list-item"><a href="{% url 'myBooking' %}">My Bookings</a></li>
               <li class="menu-list-item">Upcomming</li>
-              <li class="menu-list-item">About Us</li>
-              <li class="menu-list-item">Contact Us</li>
+              <li class="menu-list-item"><a href="{% url 'about' %}">About Us</a></li>
+              <li class="menu-list-item"><a href="{% url 'contact' %}">Contact Us</a></li>
 
           </ul>
       </div>
@@ -50,13 +51,18 @@
   </div>
 </div>
 <div class="sidebar">
-  <i class="left-menu-icon fas fa-search"></i>
-  <i class="left-menu-icon fas fa-home"></i>
-  <i class="left-menu-icon fas fa-users"></i>
-  <i class="left-menu-icon fas fa-bookmark"></i>
-  <i class="left-menu-icon fas fa-tv"></i>
-  <i class="left-menu-icon fas fa-hourglass-start"></i>
-  <i class="left-menu-icon fas fa-shopping-cart"></i>
+  <a href="{% url 'homePage' %}"> <i class="left-menu-icon fas fa-home"> </i></a>
+  <a href="{% url 'myBooking' %}"><i class="left-menu-icon fas fa-shopping-cart"> </i></a>
+  <a href="{% url 'about' %}"><i class="left-menu-icon fas fa-users"> </i></a>
+  <i class="left-menu-icon fas fa-calendar-alt"> </i>
+  <a href="{% url 'contact' %}"><i class="left-menu-icon fas fa-envelope"> </i></a>
+  {% if user.is_authenticated %}
+  <i class="left-menu-icon fas fa-user-cog" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+
+  {% else %}
+    <a href="{% url 'login' %}"><i class="left-menu-icon fas fa-sign-in-alt"> </i></a>
+  {% endif %}
+  
 </div>
 <div class="container">
   <div class="content-container">

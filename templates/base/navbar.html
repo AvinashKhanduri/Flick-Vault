@@ -7,11 +7,11 @@
         </div>
         <div class="menu-container">
             <ul class="menu-list">
-                <li class="menu-list-item active">Home</li>
-                <li class="menu-list-item">Booking</li>
+                <li class="menu-list-item"><a href="{% url 'homePage' %}">Home</a></li>
+                <li class="menu-list-item"><a href="{% url 'myBooking' %}">My Bookings</a></li>
                 <li class="menu-list-item">Upcomming</li>
-                <li class="menu-list-item">About Us</li>
-                <li class="menu-list-item">Contact Us</li>
+                <li class="menu-list-item"><a href="{% url 'about' %}">About Us</a></li>
+                <li class="menu-list-item"><a href="{% url 'contact' %}">Contact Us</a></li>
   
             </ul>
         </div>

@@ -49,13 +49,19 @@ class Seat(baseModel):
     availability_status = models.BooleanField(default=True)
     screen = models.ForeignKey(Screen,on_delete=models.CASCADE,related_name="seats")
 
+    def __str__(self):
+        return f" set number : {self.seat_number}, screen number: {self.screen.screen_number}, theater: {self.screen.theater.name}"
+
 
 
 class Booking(baseModel):
-    booking_date = models.DateField()
+    booking_date = models.DateField(auto_now_add=True)
     total_price = models.IntegerField()
     payment_status = models.BooleanField(default=False)
     user = models.ForeignKey(profile, on_delete=models.CASCADE,related_name="bookings")
     show = models.ForeignKey(Show,on_delete=models.CASCADE,related_name="bookings")
     payment = models.OneToOneField(Payment,on_delete=models.CASCADE,related_name="bookings")
+
+    def __str__(self):
+        return f"Booking for {self.show.movie.title} date {self.booking_date}"
 

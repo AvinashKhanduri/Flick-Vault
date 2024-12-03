@@ -93,3 +93,9 @@
     cursor: pointer;
     transition: 1s ease all;
   }
+
+
+  a{
+    text-decoration: solid;
+    color: white;
+  }

@@ -285,3 +285,8 @@
           display: none;
       }
   }
+
+a{
+  text-decoration: solid;
+  color: white;
+}

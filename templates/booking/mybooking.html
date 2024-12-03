@@ -1,0 +1,51 @@
+{% extends 'base/base.html' %}
+{% block title %} movieDetail {% endblock %}
+{% block custom_css %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'booking/css/mybooking.css' %}">
+{% endblock %}
+{% block pagebody %}
+{% include 'base/navbar.html' %}
+{% include 'base/logoutModel.html' %}
+
+
+
+{% for booking in bookings %}
+<div class="movie_card" id="tomb">
+    <div class="info_section">
+      <div class="movie_header">
+        {% for poster in booking.show.movie.posters.all %}
+        <img class="locandina" src="{{ poster.poster.url }}"/>
+        {% endfor %}
+        <h1>{{ booking.show.movie.title }}</h1>
+        <h4>{{ booking.show.movie.release_date }}</h4>
+        <span class="minutes">{{ booking.show.movie.duration }} hour</span>
+        <p class="type">{{ booking.show.movie.genre }}</p>
+      </div>
+      <div class="movie_desc">
+        <p class="text">
+          {{ booking.show.movie.long_Description }}
+        </p>
+      </div>
+      <!-- <div class="movie_social">
+        <ul>
+          <li><i class="material-icons">share</i></li>
+          <li><i class="material-icons"></i></li>
+          <li><i class="material-icons">chat_bubble</i></li>
+        </ul>
+      </div> -->
+    </div>
+    {% for poster in booking.show.movie.posters.all %}
+    <div class="blur_back tomb_back" style="background: url('{{ poster.poster.url }}');"></div>
+    {% endfor %}
+    
+  </div>
+{% endfor %}
+
+
+{% endblock %}
+{% block custom_js %}
+{% load static %}
+<!-- <script src="{% static 'booking/js/seatSelection.js' %}"></script>  -->
+{% endblock %}
+

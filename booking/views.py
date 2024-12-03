@@ -1,7 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from home.models import *
 from booking.models import *
 from django.http import Http404
+from base.utils import isAvaliable
+import random
+import datetime
+from payments.models import *
+from base.emails import send_ticket_booking_email
 # Create your views here.
 def movieDetailPage(request, movie_id):
     try:
@@ -53,26 +58,56 @@ def selectSeat(request, show_id):
     try:
         # Get the show instance based on the provided show_id
         show = Show.objects.get(uid=show_id)
-        
-        # Log show and screen details
-        print(f"Show: {show}, Screen: {show.screen}")
-        
-        # Get the screen associated with the show
-        screen = show.screen
-        
-        # Retrieve all seats related to this screen
-        seats = Seat.objects.filter(screen=screen)
-        
-        # Log retrieved seats
-        print(f"Seats: {seats}")
-        
-        if not seats.exists():
-            print("No seats found for the selected screen.")
-        
-        # Render the seat selection template with the necessary context
-        return render(request, "booking/seatSelection.html", context={"show": show, "seats": seats})
-    
+
+        ticket_count = 0
+        total_amount = 0.0
+
+        # Check if the request method is POST and the necessary fields are provided
+        if request.method == 'POST':
+            ticket_count = int(request.POST.get('ticket_count', 0))  # Default to 0 if not provided
+            total_amount = float(request.POST.get('total_amount', 0.0))  # Default to 0 if not provided
+
+            # Additional validation: check if ticket count and total amount are positive
+            if ticket_count <= 0 or total_amount <= 0:
+                # You can handle errors here, such as displaying a message to the user
+                return render(request, "booking/seatSelection.html", {
+                    "show": show,
+                    "error": "Invalid ticket count or amount."
+                })
+            payment = Payment(amount = total_amount,payment_date = datetime.datetime.now().date(),payment_method = "Dummy Payment")
+            payment.save()
+            
+            # Create the booking object and save it to the database
+            booking = Booking(total_price=total_amount, user=request.user.profile, show=show, payment = payment)
+            booking.save()
+
+            ticket = Ticket(booking = booking,screen = show.screen,total_person = ticket_count)
+            ticket.save()
+
+            send_ticket_booking_email(username=request.user.first_name,movie=show.movie.title,theater=show.theater.name,address=show.theater.location,date=show.date,number_of_tickets=ticket_count,total_price=total_amount,email=request.user.email)
+
+            # Optionally, you could pass the booking instance to the template to show a confirmation
+            return redirect('thankyou')
+
+        # If it's not a POST request, just render the page with the show data
+        return render(request, "booking/seatSelection.html", {
+            "show": show,
+        })
+
     except Show.DoesNotExist:
         raise Http404("Show not found.")
 
 
+def thankyou(request):
+    return render(request, "booking/thankyou.html")
+
+def myBooking(request):
+    if request.user.is_authenticated:
+        try:
+            bookings = Booking.objects.filter(user=request.user.profile)
+            return render(request,"booking/mybooking.html",context={"bookings":bookings})
+        except Exception as e:
+            bookings = None
+            return render(request,"booking/mybooking.html",context={"bookings":bookings})
+    else:
+        return redirect("login")

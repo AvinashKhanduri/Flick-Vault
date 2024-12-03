@@ -21,3 +21,5 @@ class ScreenAdmin(admin.ModelAdmin):
 admin.site.register(Theater, TheaterAdmin)
 admin.site.register(Screen, ScreenAdmin)
 admin.site.register(Show)
+admin.site.register(Seat)
+admin.site.register(Booking)

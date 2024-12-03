@@ -7,16 +7,7 @@
 {% block pagebody %}
 {% include 'base/navbar.html' %}
 {% include 'base/logoutModel.html' %}
-{% if seats %}
-{% for seat in seats %}
-    <div class="seat">
-        Seat Number: {{ seat.seat_number }} - {% if seat.availability_status %} Available {% else %} Not Available {% endif %}
-    </div>
-{% endfor %}
 
-{% else %}
-<p style="color: black;">No seats</p>
-{% endif %}
 <div class="main">
     <div class="tickets">
         <div class="ticket-selector">
@@ -30,13 +21,21 @@
                     <div class="item">Selected</div>
 
                 </div>
+
                 <div class="all-seats">
                     <input type="checkbox" name="tickets" id="s1">
                     <label for="s1" class="seat booked"></label>
-                </div>
+                    
+                    <!-- {% for i in totalSeats %}
+                    <input type="checkbox" name="tickets" id="{{ i }}">
+                        <label for="{{ i }}" class="seat {% if isSeat.i %}booked{% endif %}"></label>
+                        {% endfor %} -->
+                    
+                    </div>
+                
             </div>
             <div class="screentext">All Eyes Here Please</div>
-            <div class="timings">
+            <!-- <div class="timings">
                 <div class="dates">
                     <input type="radio" name="date" id="d1" checked>
                     <label for="d1" class="dates-item">
@@ -84,16 +83,39 @@
                     <input type="radio" name="time" id="t4">
                     <label for="t4" class="time">21:30</label>
                 </div>
-            </div>
+            </div> -->
         </div>
-        <div class="price">
-            <div class="total">
-                <span><span class="count">0</span> Tickets</span>
-                <div>₹ <div class="amount">0</div>
+        <!-- <div class="price">
+            <form method="post">
+                {% csrf_token %}
+                <div class="total">
+                    <span><span  class="count">0</span> Tickets</span>
+                    <div>₹ <div class="amount">0</div>
+                    </div>
                 </div>
-            </div>
-            <button type="button">Book</button>
+                <button type="button">Book</button>
+            </form>
+        </div> -->
+
+
+        <div class="price">
+            <form method="post" id="ticket-form">
+                {% csrf_token %}
+                <div class="total">
+                    <span><span class="count">0</span> Tickets</span>
+                    <div>₹ <div class="amount">0</div></div>
+                </div>
+                
+                <!-- Hidden input fields to store ticket count and total amount -->
+                <input type="hidden" name="ticket_count" id="ticket_count" value="0">
+                <input type="hidden" name="total_amount" id="total_amount" value="0">
+                
+                <!-- Button to submit the form -->
+                <button type="submit">Book</button>
+            </form>
         </div>
+
+
     </div>
 </div>
 

@@ -13,3 +13,10 @@ def homepage(request):
     hollywood = Movie.objects.filter(region__iexact="Hollywood")
 
     return render(request,'home/home.html',context={"movieData":movieData,"recommended":recommended,"bollywood":bollywood,"hollywood":hollywood})
+
+
+def AboutUs(request):
+    return render(request, 'home/AboutUs.html')
+
+def ContactUs(request):
+    return render(request, "home/ContactUs.html")
